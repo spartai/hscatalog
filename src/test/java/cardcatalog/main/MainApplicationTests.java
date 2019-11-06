@@ -1,4 +1,4 @@
-package cc.main;
+package cardcatalog.main;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

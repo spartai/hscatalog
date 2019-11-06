@@ -37,7 +37,11 @@ public class Card extends BaseEntity {
     @Column
     private String cardClass;
 
-    @ManyToMany(targetEntity = Deck.class, mappedBy = "cards")
+    /* ?? */
+    @ManyToMany(
+            targetEntity = Deck.class,
+            mappedBy = "cards"
+    )
     private List<Deck> decks;
 
 }

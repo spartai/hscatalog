@@ -6,10 +6,6 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import lombok.Data;
 
-/**
- *
- * @author keza13
- */
 @Data
 @MappedSuperclass
 public class BaseEntity {

@@ -6,9 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -21,5 +19,12 @@ public class Deck extends BaseEntity {
 
     @JsonIgnore
     @ManyToMany(targetEntity = Card.class)
-    private List<Deck> cards;
+    private List<Card> cards;
+
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private Long userid;
+
+
 }
