@@ -1,38 +1,35 @@
-package cc.main.entities;
+package cardcatalog.main.entities;
 
-import lombok.Getter;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
+import javax.management.relation.Role;
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.persistence.*;
 
-
-
-@Entity     // marks class as a persistable entity
-@Table(name = "users")  // optional -- lets you set the name of table, different from default
+@Entity
+@Table(name = "user")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode
 public class User extends BaseEntity {
-    @Getter // generates getter for field
-    @NotNull
-    private String email;
 
-    @Getter
-    @NotNull
+    @Column(nullable = false)
+    private String name;
+
+    @Column(nullable = false)
     private String username;
 
-    @Getter
-    @ElementCollection(fetch = FetchType.EAGER) // ??
-    @Enumerated(EnumType.STRING)    // makes sure field is stored as string in database
-    @NotNull
-    private Enum<UserRole> role;
+    @Column(nullable = false)
+    private String email;
 
+    @Column(nullable = false)
+    private String password;
 
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
-    public User(Long id, String email, String username, Enum<UserRole> role) {
-        this.id = id;
-        this.email = email;
-        this.username = username;
-        this.role = role;
-    }
-
-    private User() {}   // elvileg ez a hibernatenek kell
 }
