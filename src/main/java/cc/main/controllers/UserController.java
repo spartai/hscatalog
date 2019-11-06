@@ -1,26 +1,26 @@
-package cc.main.controllers;
+package cardcatalog.main.controllers;
 
-//import hu.elte.keza.issuetracker.entities.Issue;
-//import hu.elte.keza.issuetracker.repositories.UserRepository;
-//import hu.elte.keza.issuetracker.security.AuthenticatedUser;
+import cardcatalog.main.entities.User;
+import cardcatalog.main.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
 
 @RestController
 @RequestMapping("user")
 public class UserController {
+
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping("")
-    public ResponseEntity<Iterable<User>> getAll(){
-        return new ResponseEntity(userRepository.findAll(), HttpStatus.OK);
+    @GetMapping("/{id}")
+    public ResponseEntity<User> get(@PathVariable Long id) {
+        Optional<User> user = userRepository.findById(id);
+        if (!user.isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(user.get());
     }
-
-
 }
