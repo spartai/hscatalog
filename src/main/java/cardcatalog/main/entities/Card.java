@@ -20,12 +20,12 @@ public class Card extends BaseEntity {
     private String name;
 
     @Column(nullable = false)
-    private String mana;
+    private int mana;
 
-    @Column
+    @Column(nullable = false)
     private int damage;
 
-    @Column
+    @Column(nullable = false)
     private int hp;
 
     @Column

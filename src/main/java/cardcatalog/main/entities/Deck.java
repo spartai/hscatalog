@@ -10,7 +10,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "message")
+@Table(name = "decks")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -25,6 +25,9 @@ public class Deck extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private Long userid;
+
+    @Column(nullable = false)
+    private String name;
 
 
 }
