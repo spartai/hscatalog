@@ -102,6 +102,13 @@ Ha pedig egy adott kártyára kattintunk, a táblából az adott kártyára vona
 
 4. *Minion:* A minion kártyák a leggyakrabban használt kártyák. Egy kasztban nagyon sokféle és nagyon sok mennyiségű is van belőle. Ezekkel lehet támadni, az ellenfél hősét leggyakrabban és ezek is védenek minket az ellenfél támadásaitól. Ők a mi saját harcosaink. Sokféle képességgel bírnak, ők befolyásolják a leggyakrabban a játék menetét.
 
+### **Könyvtárstruktúra leírása**
+
+A kiinduló mappánk a *src*, ebben megtalálható a *main*, illetve test mappa.
+> A main mappában található meg például a README.md és a pom.xml fájlaink.
+A fő mappánk a *java*-n belül a *cardcatalog.main*, amely 3 almappában 3 fő komponensre bomlik. A *controllers* mappában megtalálhatóak a kontrollerek, az *entities*-ben az alap osztályaink, a *repository* mappában pedig a három repository, amiket a kontrollerek használnak.
+A *java* mappán belül található még *resources* mappa, amely például az import.sql fájlt tartalmazza, amelyben az adatbázisba betöltendő adataink találhatóak.
+
 ## UML Adatbázis diagram
 
 ![](.\hsproj\hscatalog\uml_database.png)
