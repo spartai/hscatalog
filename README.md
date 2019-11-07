@@ -104,10 +104,15 @@ Ha pedig egy adott kártyára kattintunk, a táblából az adott kártyára vona
 
 ### **Könyvtárstruktúra leírása**
 
-A kiinduló mappánk a *src*, ebben megtalálható a *main*, illetve test mappa.
-> A main mappában található meg például a README.md és a pom.xml fájlaink.
-A fő mappánk a *java*-n belül a *cardcatalog.main*, amely 3 almappában 3 fő komponensre bomlik. A *controllers* mappában megtalálhatóak a kontrollerek, az *entities*-ben az alap osztályaink, a *repository* mappában pedig a három repository, amiket a kontrollerek használnak.
-A *java* mappán belül található még *resources* mappa, amely például az import.sql fájlt tartalmazza, amelyben az adatbázisba betöltendő adataink találhatóak.
+A kiinduló mappánk a  _src_, ebben megtalálható a  _main_, illetve test mappa.
+
+>A main mappában található meg például a README.md és a pom.xml fájlaink. 
+
+A fő mappánk a  _java_-n belül a  _cardcatalog.main_, amely 3 almappában 3 fő komponensre bomlik. 
+
+A  _controllers_  mappában megtalálhatóak a kontrollerek, az  _entities_-ben az alap osztályaink, a  _repository_  mappában pedig a három repository, amiket a kontrollerek használnak. 
+
+A  _java_  mappán belül található még  _resources_  mappa, amely például az import.sql fájlt tartalmazza, amelyben az adatbázisba betöltendő adataink találhatóak.
 
 ## UML Adatbázis diagram
 
