@@ -29,10 +29,15 @@ CREATE TABLE userdecks(
   deckid INT NOT NULL
 ); */
 
-
+/*
 INSERT INTO users (username, email, password, role) VALUES ('admin', 'admin@admin.hu', '$2a$04$YDiv9c./ytEGZQopFfExoOgGlJL6/o0er0K.hiGb5TGKHUL8Ebn..', 'ADMIN');
 INSERT INTO users (username, email, password, role) VALUES ('zek', 'zek@zek.hu', '$2a$04$YDiv9c./ytEGZQopFfExoOgGlJL6/o0er0K.hiGb5TGKHUL8Ebn..', 'USER');
 INSERT INTO users (username, email, password, role) VALUES ('lara', 'lara@tomi.hu', '$2a$04$YDiv9c./ytEGZQopFfExoOgGlJL6/o0er0K.hiGb5TGKHUL8Ebn..', 'USER');
+*/
+
+INSERT INTO users (username, email, password, role) VALUES ('admin', 'admin@admin.hu', 'adminjelszo', 'ADMIN');
+INSERT INTO users (username, email, password, role) VALUES ('zek', 'zek@zek.hu', 'pw1', 'USER');
+INSERT INTO users (username, email, password, role) VALUES ('lara', 'lara@tomi.hu', 'pw2', 'USER');
 
 INSERT INTO cards (name, mana, damage, hp, description, imgsrc, class) VALUES ('Alley Cat', 1, 1, 1, 'Battlecry: Summon a 1/1 Cat.', 'https://www.hearthstonetopdecks.com/wp-content/uploads/2016/11/alleycat.png', 'Hunter');
 INSERT INTO cards (name, mana, damage, hp, description, imgsrc, class) VALUES ('Arcane Intellect', 3, null, null, 'Draw 2 cards.', 'https://www.hearthstonetopdecks.com/wp-content/uploads/2014/03/arcane-intellect.png', 'Mage');
