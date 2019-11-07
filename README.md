@@ -103,4 +103,5 @@ Ha pedig egy adott kártyára kattintunk, a táblából az adott kártyára vona
 4. *Minion:* A minion kártyák a leggyakrabban használt kártyák. Egy kasztban nagyon sokféle és nagyon sok mennyiségű is van belőle. Ezekkel lehet támadni, az ellenfél hősét leggyakrabban és ezek is védenek minket az ellenfél támadásaitól. Ők a mi saját harcosaink. Sokféle képességgel bírnak, ők befolyásolják a leggyakrabban a játék menetét.
 
 ## UML Adatbázis diagram
-![](E:\Egyetem\Alkalmazások fejlesztése\hsproj\hscatalog\uml_database.png)
+
+![](.\hsproj\hscatalog\uml_database.png)
