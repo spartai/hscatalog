@@ -7,8 +7,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
-
+@RestController
+@RequestMapping("card")
 public class CardController {
 
     @Autowired
@@ -26,6 +28,26 @@ public class CardController {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(card.get());
+    }
+
+    @GetMapping("/mana/{mana}")
+    public ResponseEntity<Iterable<Card>> getAllByMana(@PathVariable Integer mana){
+        return new ResponseEntity(cardRepository.findAllByMana(mana), HttpStatus.OK);
+    }
+
+    @GetMapping("/damage/{damage}")
+    public ResponseEntity<Iterable<Card>> getAllByDamage(@PathVariable Integer damage){
+        return new ResponseEntity(cardRepository.findAllByDamage(damage), HttpStatus.OK);
+    }
+
+    @GetMapping("/hp/{hp}")
+    public ResponseEntity<Iterable<Card>> getAllByHp(@PathVariable Integer hp){
+        return new ResponseEntity(cardRepository.findAllByHp(hp), HttpStatus.OK);
+    }
+
+    @GetMapping("/class/{class}")
+    public ResponseEntity<Iterable<Card>> getAllByClass(@PathVariable String cardClass){
+        return new ResponseEntity(cardRepository.findAllByCardClass(cardClass), HttpStatus.OK);
     }
 
     @PutMapping("/{id}")

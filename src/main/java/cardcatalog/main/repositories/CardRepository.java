@@ -12,11 +12,11 @@ public interface CardRepository extends CrudRepository<Card, Long> {
     Optional<Card> findByName(String name);
 
 
-    List<Card> findAllByMana (int mana);
+    List<Card> findAllByMana (Integer mana);
 
-    List<Card> findAllByDamage (int damage);
+    List<Card> findAllByDamage (Integer damage);
 
-    List<Card> findAllByHp (int hp);
+    List<Card> findAllByHp (Integer hp);
 
     List<Card> findAllByCardClass (String cardClass);
 }

@@ -40,5 +40,7 @@ INSERT INTO cards (name, mana, damage, hp, description, imgsrc, class) VALUES ('
 INSERT INTO decks (cardid) VALUES ([2,3]);
 INSERT INTO decks (cardid) VALUES ([1,2]);
 
+/*
 INSERT INTO userdecks (uid, deckid) VALUES (1,2);
 INSERT INTO userdecks (uid, deckid) VALUES (2,1);
+*/
