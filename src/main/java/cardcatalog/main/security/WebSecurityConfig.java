@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cardcatalog.main.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,10 +29,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .csrf().disable()
             .authorizeRequests()
                 .antMatchers("/h2/**", "/users/register").permitAll()   // important!
+                .antMatchers("/**").hasRole("USER")
                 .anyRequest().authenticated()
                 .and()
                 .httpBasic()
-                .authenticationEntryPoint(getBasicAuthEntryPoint())
+                //.authenticationEntryPoint(getBasicAuthEntryPoint())
                 .and()
             .headers()      // important!
                 .frameOptions().disable()
@@ -49,14 +45,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     protected void configureAuthentication(AuthenticationManagerBuilder auth) throws Exception {
         auth
-            .userDetailsService(userDetailsService)
-            .passwordEncoder(passwordEncoder());
+            //.userDetailsService(userDetailsService)
+            //.passwordEncoder(passwordEncoder());
+            .inMemoryAuthentication()
+            .withUser("user").password("$2a$04$YDiv9c./ytEGZQopFfExoOgGlJL6/o0er0K.hiGb5TGKHUL8Ebn..").roles("USER");
     }
-
+    
+/*
     @Bean
     public CustomBasicAuthenticationEntryPoint getBasicAuthEntryPoint(){
         return new CustomBasicAuthenticationEntryPoint();
-    }
+    }*/
     
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {

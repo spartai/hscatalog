@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @RestController
 @RequestMapping("user")
@@ -86,5 +87,6 @@ public class UserController {
         }
         return ResponseEntity.notFound().build();
     }
+
 
 }

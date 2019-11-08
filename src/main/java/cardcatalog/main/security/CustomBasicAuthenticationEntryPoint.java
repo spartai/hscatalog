@@ -1,4 +1,4 @@
-package cardcatalog.main.security;
+/*package cardcatalog.main.security;
 
 
 import javax.naming.AuthenticationException;
@@ -27,4 +27,4 @@ public class CustomBasicAuthenticationEntryPoint extends BasicAuthenticationEntr
         setRealmName("MY REALM");
         super.afterPropertiesSet();
     }
-}
+}*/

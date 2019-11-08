@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cardcatalog.main.security;
 
 import cardcatalog.main.security.AuthenticatedUser;
@@ -22,25 +17,27 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
-
-    @Autowired
-    private UserRepository userRepository;
     
-    @Autowired 
-    private AuthenticatedUser authenticatedUser;
+        @Autowired
+        private UserRepository userRepository;
+        
+        @Autowired
+        private AuthenticatedUser authenticatedUser;
+        
+        @Override
+        @Transactional(readOnly = true)
+        public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+            Optional<User> oUser = userRepository.findByUsername(username);
+        
+        
+            if (!oUser.isPresent()) {
+                throw new UsernameNotFoundException(username);
+            }
+            User user = oUser.get();
+            authenticatedUser.setUser(user);
+            Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
+            grantedAuthorities.add(new SimpleGrantedAuthority(user.getRole().toString()));
 
-    @Override
-    @Transactional(readOnly = true)
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<User> oUser = userRepository.findByUsername(username);
-        if (!oUser.isPresent()) {
-            throw new UsernameNotFoundException(username);
+            return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantedAuthorities);
         }
-        User user = oUser.get();
-        authenticatedUser.setUser(user);
-        Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-        grantedAuthorities.add(new SimpleGrantedAuthority(user.getRole().toString()));
-
-        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantedAuthorities);
-    }
 }
