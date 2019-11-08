@@ -1,12 +1,13 @@
 package cardcatalog.main.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -17,14 +18,14 @@ import java.util.List;
 @EqualsAndHashCode
 public class Deck extends BaseEntity {
 
-    @JsonIgnore
+
     @ManyToMany(targetEntity = Card.class)
-    private List<Card> cards;
+    private List<Card> cards = new ArrayList<>();
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(targetEntity = User.class)
     @JoinColumn(name = "user_id")
-    private Long userid;
+    private User user;
 
     @Column(nullable = false)
     private String name;

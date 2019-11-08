@@ -1,6 +1,7 @@
 package cardcatalog.main.repositories;
 
 import cardcatalog.main.entities.Deck;
+import cardcatalog.main.entities.User;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -11,9 +12,11 @@ import java.util.Optional;
 
 @Repository
 public interface DeckRepository extends CrudRepository<Deck, Long> {
-    Optional<Deck> findByName(String name);
+
+    //@Query(value = "SELECT * FROM decks WHERE id = ?1", nativeQuery = true)
+    Optional<Deck> findById(Long id);
+
+    List<Deck> findAllByUser (User user);
 
 
-    @Query("SELECT id, name FROM decks WHERE userid = ?1")
-    List<Deck> findAllByUserid(Long userid); // ??
 }

@@ -1,11 +1,13 @@
 package cardcatalog.main.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -22,10 +24,10 @@ public class Card extends BaseEntity {
     @Column(nullable = false)
     private Integer mana;
 
-    @Column(nullable = false)
+    @Column()
     private Integer damage;
 
-    @Column(nullable = false)
+    @Column()
     private Integer hp;
 
     @Column
@@ -37,11 +39,11 @@ public class Card extends BaseEntity {
     @Column
     private String cardClass;
 
-    /* ?? */
+    @JsonIgnore
     @ManyToMany(
             targetEntity = Deck.class,
             mappedBy = "cards"
     )
-    private List<Deck> decks;
+    private List<Deck> decks = new ArrayList<>();
 
 }

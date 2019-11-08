@@ -8,11 +8,11 @@
         <version>2.2.0.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>cc</groupId>
+    <groupId>cardcatalog</groupId>
     <artifactId>main</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>main</name>
-    <description>Demo project for Spring Boot</description>
+    <description>HearthStone kártyakatalógus</description>
 
     <properties>
         <java.version>1.8</java.version>

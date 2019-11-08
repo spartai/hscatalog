@@ -1,6 +1,6 @@
 package cardcatalog.main.controllers;
 
-import cardcatalog.main.entities.Role;
+import cardcatalog.main.entities.UserRole;
 import cardcatalog.main.entities.User;
 import cardcatalog.main.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,12 +24,12 @@ public class UserController {
 
     @GetMapping("/all-users")
     public ResponseEntity<Iterable<User>> getAllUsers() {
-        return new ResponseEntity(userRepository.findAllByRole(Role.USER), HttpStatus.OK);
+        return new ResponseEntity(userRepository.findAllByRole(UserRole.USER), HttpStatus.OK);
     }
 
     @GetMapping("/all-admins")
     public ResponseEntity<Iterable<User>> getAllAdmins() {
-        return new ResponseEntity(userRepository.findAllByRole(Role.ADMIN), HttpStatus.OK);
+        return new ResponseEntity(userRepository.findAllByRole(UserRole.ADMIN), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
@@ -42,7 +42,7 @@ public class UserController {
     }
 
     @GetMapping("/username/{username}")
-    public ResponseEntity<User> get(@PathVariable String username) {
+    public ResponseEntity<User> getByUsername(@PathVariable String username) {
         Optional<User> user = userRepository.findByUsername(username);
         if (!user.isPresent()) {
             return ResponseEntity.notFound().build();
@@ -57,6 +57,34 @@ public class UserController {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(user.get());
+    }
+
+    // post
+    @PostMapping("")
+    public ResponseEntity<User> post(@RequestBody User user) {
+        return ResponseEntity.ok(userRepository.save(user));
+    }
+
+    // delete
+    @DeleteMapping("/{id}")
+    public ResponseEntity<User> delete(@PathVariable Long id) {
+        Optional<User> user = userRepository.findById(id);
+        if (!user.isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+        userRepository.deleteById(id);
+        return ResponseEntity.ok().build();
+    }
+
+    // put
+    @PutMapping("/{id}")
+    public ResponseEntity<User> update(@PathVariable Long id, @RequestBody User user) {
+        Optional<User> ouser = userRepository.findById(id);
+        if (ouser.isPresent()) {
+            user.setId(id);
+            return ResponseEntity.ok(userRepository.save(user));
+        }
+        return ResponseEntity.notFound().build();
     }
 
 }

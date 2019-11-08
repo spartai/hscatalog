@@ -1,5 +1,5 @@
 package cardcatalog.main.entities;
 
-public enum Role {
+public enum UserRole {
     USER, ADMIN
 }

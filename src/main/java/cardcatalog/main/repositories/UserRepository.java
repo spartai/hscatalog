@@ -1,6 +1,6 @@
 package cardcatalog.main.repositories;
 
-import cardcatalog.main.entities.Role;
+import cardcatalog.main.entities.UserRole;
 import cardcatalog.main.entities.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -14,7 +14,7 @@ public interface UserRepository extends CrudRepository<User, Long> {
     Optional<User> findByEmail (String email);
 
 
-    List<User> findAllByRole (Role role);
+    List<User> findAllByRole (UserRole role);
 
 
 

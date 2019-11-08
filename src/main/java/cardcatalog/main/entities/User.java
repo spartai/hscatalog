@@ -9,7 +9,7 @@ import javax.management.relation.Role;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "users")
@@ -18,9 +18,6 @@ import java.util.List;
 @AllArgsConstructor
 @EqualsAndHashCode
 public class User extends BaseEntity {
-
-    @Column(nullable = false)
-    private String name;
 
     @Column(nullable = false, unique = true)
     private String username;
@@ -33,13 +30,14 @@ public class User extends BaseEntity {
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private Role role;
+    private UserRole role;
 
+    @JsonIgnore
     @OneToMany(
-            mappedBy = "userid",
+            mappedBy = "user",
             cascade = CascadeType.ALL,
             orphanRemoval = true,
-            fetch = FetchType.LAZY
+            targetEntity = Deck.class
     )
     List<Deck> decks = new ArrayList<>();
 

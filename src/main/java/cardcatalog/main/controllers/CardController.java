@@ -5,6 +5,7 @@ import cardcatalog.main.repositories.CardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -45,11 +46,12 @@ public class CardController {
         return new ResponseEntity(cardRepository.findAllByHp(hp), HttpStatus.OK);
     }
 
-    @GetMapping("/class/{class}")
+    @GetMapping("/class/{cardClass}")
     public ResponseEntity<Iterable<Card>> getAllByClass(@PathVariable String cardClass){
-        return new ResponseEntity(cardRepository.findAllByCardClass(cardClass), HttpStatus.OK);
+        return new ResponseEntity(cardRepository.findAllByCardClass(StringUtils.capitalize(cardClass)), HttpStatus.OK);
     }
 
+    // put
     @PutMapping("/{id}")
     public ResponseEntity<Card> update(@PathVariable Long id, @RequestBody Card card) {
         Optional<Card> oCard = cardRepository.findById(id);
@@ -60,11 +62,13 @@ public class CardController {
         return ResponseEntity.notFound().build();
     }
 
+    // post
     @PostMapping("")
     public ResponseEntity<Card> post(@RequestBody Card card) {
         return ResponseEntity.ok(cardRepository.save(card));
     }
 
+    // delete
     @DeleteMapping("/{id}")
     public ResponseEntity<Card> delete(@PathVariable Long id) {
         Optional<Card> card = cardRepository.findById(id);
