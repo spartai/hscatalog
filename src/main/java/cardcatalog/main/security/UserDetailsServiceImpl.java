@@ -1,11 +1,8 @@
 package cardcatalog.main.security;
 
-import cardcatalog.main.security.AuthenticatedUser;
+import cardcatalog.main.controllers.UserController;
 import cardcatalog.main.entities.User;
 import cardcatalog.main.repositories.UserRepository;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -14,6 +11,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
@@ -28,8 +29,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         @Transactional(readOnly = true)
         public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
             Optional<User> oUser = userRepository.findByUsername(username);
-        
-        
             if (!oUser.isPresent()) {
                 throw new UsernameNotFoundException(username);
             }

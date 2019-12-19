@@ -1,0 +1,70 @@
+<div class="row" id="banner">
+  <div class="col-3"></div>
+  <div class="col-6">
+    <img style = "width: 100%" src="https://png2.cleanpng.com/sh/199ccf77f4d4f5a96edc7ffb7d80275f/L0KzQYm3WME3N5NmR91yc4Pzfri0iPVieqVtiAZ4bnWwfLFuj71oaZ5qRdR7YX7nPcH5jBR2a6UyRadrN0XlR4TpVsA5QZI1RqY5NkK5R4mCUcU0PGU5SaQCNUO8RYW1kP5o/kisspng-hearthstone-logo-game-brand-product--5b75b73b6089a0.4062678915344412753954.png">
+  </div>
+  <div class="col-3"></div>
+</div>
+<div class="row" id="list-card">
+  <div class="col-4"></div>
+  <div class="col-4">
+    <h1 class="ml-4 mt-4">Kártyák listája</h1>
+  </div>
+  <div class="col-3"></div>
+</div>
+<div id="card-filter">
+
+    <form [formGroup]="searchForm" (ngSubmit)="onSubmit()" action="">
+      <div class="form-row ml-5 mr-3">
+        <div class="form-group col-2">
+          <label for="nev">Kártya neve</label>
+          <input formControlName="name" type="text" name="nev" class="form-control" placeholder="Név" />
+        </div>
+        <div class="form-group col-1">
+          <label for="mana">Mana</label>
+          <input formControlName="mana" type="number" name="mana" class="form-control" min="0" max="25" placeholder="Mana" />
+        </div>
+        <div class="form-group col-1">
+          <label for="hp">HP</label>
+          <input formControlName="hp" type="number" name="hp" class="form-control"  min="0" max="20" placeholder="Életerő"/>
+        </div>
+        <div class="form-group col-1">
+          <label for="damage">Damage</label>
+          <input formControlName="damage" type="number" name="damage" class="form-control"  min="0" max="10" placeholder="Sebzés" />
+        </div>
+        <div class="form-group col-1">
+          <label for="class">Class</label>
+          <select formControlName="class" name="class" class="custom-select mr-sm-2" id="cardclass-selector">
+              <option value="Mage">Mage</option>
+              <option value="Paladin">Paladin</option>
+              <option value="Warrior">Warrior</option>
+              <option value="Warlock">Warlock</option>
+              <option value="Druid">Druid</option>
+              <option value="Priest">Priest</option>
+              <option value="Hunter">Hunter</option>
+              <option value="Shaman">Shaman</option>
+              <option value="Rogue">Rogue</option>
+              <option value="Neutral">Neutral</option>
+              <option value="All">All Cards</option>
+          </select>
+      </div>
+    </div>
+        <input type="submit" value="Keresés" class="btn btn-secondary ml-5 mb-4" />
+    </form> 
+</div>
+
+<div id="card-list">
+    <div class="row">
+      <div class="col-12">
+        <div class="row">
+            <div class="col-sm-6 col-md-3 text-center mb-1" *ngFor="let card of cards; let i = index" [attr.data-index]="i">
+              <a [routerLink]="['/kartya/' + card.id]" style="color: black">
+                  <img src="{{card.imgsrc}}" style="width: 70%" />
+              </a>
+              <br />
+          </div>
+          <div *ngIf ="(i + 1) % 4 == 0" class="w-100"></div>
+        </div>
+      </div>
+    </div>
+</div>

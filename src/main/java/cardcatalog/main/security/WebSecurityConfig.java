@@ -3,62 +3,60 @@ package cardcatalog.main.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true)
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+    public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    
-    @Autowired
-    private UserDetailsServiceImpl userDetailsService;
-    
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http
-            .cors()
-                .and()
-            .csrf().disable()
-            .authorizeRequests()
-                .antMatchers("/h2/**", "/users/register").permitAll()   // important!
-                .antMatchers("/**").hasRole("USER")
-                .anyRequest().authenticated()
-                .and()
-                .httpBasic()
-                //.authenticationEntryPoint(getBasicAuthEntryPoint())
-                .and()
-            .headers()      // important!
-                .frameOptions().disable()
-                .and()
-            .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-    } 
- 
-    @Autowired
-    protected void configureAuthentication(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-            //.userDetailsService(userDetailsService)
-            //.passwordEncoder(passwordEncoder());
-            .inMemoryAuthentication()
-            .withUser("user").password("$2a$04$YDiv9c./ytEGZQopFfExoOgGlJL6/o0er0K.hiGb5TGKHUL8Ebn..").roles("USER");
-    }
-    
-/*
-    @Bean
-    public CustomBasicAuthenticationEntryPoint getBasicAuthEntryPoint(){
-        return new CustomBasicAuthenticationEntryPoint();
-    }*/
-    
-    @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+        @Autowired
+        private UserDetailsServiceImpl userDetailsService;
+
+        @Autowired
+        protected void configureAuthentication(AuthenticationManagerBuilder auth) throws Exception {
+            auth
+                    .userDetailsService(userDetailsService)
+                    .passwordEncoder(passwordEncoder());
+        }
+
+        @Override
+        protected void configure(HttpSecurity http) throws Exception {
+            http
+                    .cors()
+                    .and()
+                    .csrf()
+                    .disable() // H2 Console
+                    .authorizeRequests()
+                    .antMatchers("/user/**").hasAnyRole("USER", "ADMIN")
+                    .antMatchers("/users/register").permitAll()
+                    .antMatchers("/user/**").hasAnyRole("USER", "ADMIN")
+                    .antMatchers("/h2/**", "/**").permitAll()
+                    .anyRequest()
+                    .authenticated()
+                    .and()
+                    .logout().clearAuthentication(true)
+                    .logoutUrl("/logout")
+                    .logoutSuccessUrl("/").deleteCookies("JSESSIONID")
+                    .invalidateHttpSession(true)
+                    .permitAll()
+                    .and()
+                    .httpBasic()
+                    .and()
+                    .headers()
+                    .frameOptions()
+                    .disable(); // H2 Console
+        }
+
+        @Bean
+        public BCryptPasswordEncoder passwordEncoder() {
+            return new BCryptPasswordEncoder();
+        }
 }

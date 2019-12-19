@@ -6,6 +6,8 @@ import cardcatalog.main.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,6 +15,7 @@ import java.util.Optional;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @RestController
+@CrossOrigin
 @RequestMapping("user")
 public class UserController {
     /*
@@ -23,6 +26,26 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
+    @PostMapping("")
+    public ResponseEntity<User> register(@RequestBody User user) {
+        Optional<User> oUser = userRepository.findByUsername(user.getUsername());
+        if (oUser.isPresent()) {
+            return ResponseEntity.badRequest().build();
+        }
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setRole(UserRole.USER);
+        return ResponseEntity.ok(userRepository.save(user));
+    }
+
+    @GetMapping("login")
+    public ResponseEntity login() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        return ResponseEntity.ok().build();
+    }
+    
     @GetMapping("/all-users")
     public ResponseEntity<Iterable<User>> getAllUsers() {
         return new ResponseEntity(userRepository.findAllByRole(UserRole.USER), HttpStatus.OK);
@@ -60,12 +83,6 @@ public class UserController {
         return ResponseEntity.ok(user.get());
     }
 
-    // post
-    @PostMapping("")
-    public ResponseEntity<User> post(@RequestBody User user) {
-        return ResponseEntity.ok(userRepository.save(user));
-    }
-
     // delete
     @DeleteMapping("/{id}")
     public ResponseEntity<User> delete(@PathVariable Long id) {
@@ -88,5 +105,8 @@ public class UserController {
         return ResponseEntity.notFound().build();
     }
 
-
+    public User getProfile() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        return userRepository.findByUsername(auth.getName()).orElseThrow(() -> new RuntimeException("No User found with the given id!"));
+    }
 }

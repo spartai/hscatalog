@@ -1,0 +1,23 @@
+<div class="row">
+    <div class="col ml-2 mt-3">
+        <a [routerLink]="['/kartyak']" class="btn btn-dark">Vissza</a>
+    </div>
+</div>
+<div class="row mt-4 ml-3">
+    <div class="col" [id] = "card">
+        <img src="{{card.imgsrc}}" style="width: 15%" class="rounded float-left img-fluid mr-3" />
+        <h1 class="mb-2">
+            {{card.name}}
+            <br />
+        </h1>
+        <p class="text-muted" style="font-size: 1.4em" *ngIf = "card.mana != null ">Mana: {{card.mana}}</p>
+        <p class="text-muted" style="font-size: 1.4em" *ngIf = "card.mana == null ">Mana: Nincs</p>
+        <p class="text-muted" style="font-size: 1.4em" *ngIf = "card.damage != null ">Sebzés: {{card.damage}}</p>
+        <p class="text-muted" style="font-size: 1.4em" *ngIf = "card.damage == null ">Sebzés: Nincs</p>
+        <p class="text-muted" style="font-size: 1.4em" *ngIf = "card.hp != null ">Életerő: {{card.hp}}</p>
+        <p class="text-muted" style="font-size: 1.4em" *ngIf = "card.hp == null ">Életerő: Nincs</p>
+        <p class="text-muted" style="font-size: 1.4em" *ngIf = "card.description != null ">Leírás: {{card.description}}</p>
+        <p class="text-muted" style="font-size: 1.4em" *ngIf = "card.description == null ">Leírás: Nincs</p>
+        <p class="text-muted" style="font-size: 1.4em" *ngIf = "card.cardClass != null ">Osztály: {{card.cardClass}}</p>
+        <p class="text-muted" style="font-size: 1.4em" *ngIf = "card.cardClass == null ">Osztály: Nincs</p>
+    </div>
