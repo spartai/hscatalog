@@ -1,0 +1,26 @@
+body {
+    padding-bottom: 140px;
+}
+
+html,body {
+    background: #ebd19e url(https://hearthstone.gamepedia.com/media/hearthstone.gamepedia.com/f/fb/Skin-Content-Background.jpg);
+}
+
+mat-form-field {
+    font-family: 'Bree Serif', serif;
+    display: block;
+}
+
+
+
+
+input {
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 2rem;
+}
+
+button {
+    font-family: 'Bree Serif', serif;
+    font-size: 1.5rem;
+}

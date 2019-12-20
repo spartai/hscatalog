@@ -1,1 +1,97 @@
-<p>regisztracio works!</p>
+<div class="row" id="banner">
+    <div class="col-4"></div>
+    <div class="col-4">
+        <p class="text-center">
+      <img style = "width: 60%" src="https://png2.cleanpng.com/sh/199ccf77f4d4f5a96edc7ffb7d80275f/L0KzQYm3WME3N5NmR91yc4Pzfri0iPVieqVtiAZ4bnWwfLFuj71oaZ5qRdR7YX7nPcH5jBR2a6UyRadrN0XlR4TpVsA5QZI1RqY5NkK5R4mCUcU0PGU5SaQCNUO8RYW1kP5o/kisspng-hearthstone-logo-game-brand-product--5b75b73b6089a0.4062678915344412753954.png">
+    </p>
+    </div>
+    <div class="col-4"></div>
+  </div>
+  <div class="row" id="content">
+    <div class="col-4"></div>
+    <div class="col-4">
+      <h1 class="mt-3 mb-4 text-center" id="focim">Regisztráció</h1>
+      <div id="register">
+  <!--
+        <form [formGroup]="cardForm" (ngSubmit)="onSubmit()" #userForm="ngForm">
+            <mat-form-field>
+                <label for="username">Felhasználónév</label> <br>
+              <input matInput placeholder="Felhasználónév" formControlName="username" 
+                required          [(ngModel)]="user.username" #username="ngModel"  >
+              <mat-error *ngIf="username.invalid && (username.dirty || username.touched) && username.errors.required">
+                Meg kell adni felhasználónevet!
+              </mat-error>
+              <mat-error *ngIf="username.invalid && (username.dirty || username.touched) && username.errors.minlength">
+                A felhasználónévnek legalább 5 karakterből kell állnia!
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <label for="email">Email cím</label> <br>
+              <input matInput placeholder="Email cím" formControlName="email"
+                required type="email" [(ngModel)]="user.email" #email="ngModel"
+              >
+              <mat-error *ngIf="email.invalid && (email.dirty || email.touched) && email.errors.required">
+                Adj meg egy valós email címet
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <label for="pword">Jelszó</label> <br>
+                <input matInput placeholder="Jelszó" formControlName="pword"
+                  required type="password"
+                  [(ngModel)]="user.password" #pword="ngModel"
+                >
+                <mat-error *ngIf="pword.invalid && (pword.dirty || pword.touched) && pword.errors.required">
+                  Adj meg egy jelszót
+                </mat-error>
+              </mat-form-field>
+
+              <p class="text-center">
+            <button mat-flat-button color="primary"
+              type="submit"
+              [disabled]="issueForm.invalid"
+            >Regisztrálok</button>
+        </p>
+          
+          </form>
+          {{card | json}}
+          {{cardForm.value | json}}
+          {{cardForm.valid | json}}
+          -->
+          <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+            <div class="form-group">
+              <label for="username">Név</label>
+              <input type="text" [(ngModel)]="user.username" 
+                class="form-control"
+                id="username"
+                name="username"
+                placeholder="Név"
+                required #username="ngModel">
+            </div>
+            <div class="form-group">
+              <label for="email">Email cím</label>
+              <input type="email" [(ngModel)]="user.email" 
+                class="form-control"
+                id="email"
+                name="email"
+                placeholder="Enter cím"
+                required #email="ngModel">
+            </div>
+            <div class="form-group">
+                <label for="pword">Email cím</label>
+                <input type="password" [(ngModel)]="user.pword" 
+                  class="form-control"
+                  id="pword"
+                  name="pword"
+                  placeholder="Jelszó"
+                  required #pword="ngModel">
+              </div>
+            <button type="submit" [disabled]="!userForm.form.valid" 
+              class="btn btn-info">Regisztrálok</button>
+          </form>
+    </div>
+    </div>
+    <div class="col-4"></div>
+  </div>
+  
