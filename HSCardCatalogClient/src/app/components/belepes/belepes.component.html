@@ -1,1 +1,38 @@
-<p>belepes works!</p>
+<!DOCTYPE html>
+<html>
+
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Bree+Serif&display=swap');
+  </style>
+<body>
+<div class="row" id="banner">
+  <div class="col-3"></div>
+  <div class="col-5">
+    <img style = "width: 60%" src="https://png2.cleanpng.com/sh/199ccf77f4d4f5a96edc7ffb7d80275f/L0KzQYm3WME3N5NmR91yc4Pzfri0iPVieqVtiAZ4bnWwfLFuj71oaZ5qRdR7YX7nPcH5jBR2a6UyRadrN0XlR4TpVsA5QZI1RqY5NkK5R4mCUcU0PGU5SaQCNUO8RYW1kP5o/kisspng-hearthstone-logo-game-brand-product--5b75b73b6089a0.4062678915344412753954.png">
+  </div>
+  <div class="col-3"></div>
+</div>
+<div class="row" id="content">
+  <div class="col-4"></div>
+  <div class="col-4">
+    <h1 class="mt-3 mb-4" id="focim">Belépés</h1>
+  </div>
+  <div class="col-3"></div>
+</div>
+<div id="login">
+
+    <form (submit)="submit(loginForm)" #loginForm = "ngForm" action="">
+        <div class="form-group">
+            <label for="username">Felhasználónév</label>
+            <input type="uname" class="form-control" id="username" aria-describedby="userHelp">
+            <small id="userHelp" class="form-text text-muted"></small>
+        </div>
+        <div class="form-group">
+            <label style="margin-top: 5%;" for="Pass">Jelszó</label>
+            <input type="password" class="form-control" id="Pass">
+        </div>
+          <button type="submit" class="btn btn-dark">Bejelentkezés</button>
+    </form> 
+</div>
+</body>
+</html>

@@ -1,3 +1,33 @@
-#card-filter, #card-list, #list-card, #banner {
-    background-color: #f3eddd;
+#banner {
+    background-image: url(https://hearthstone.gamepedia.com/media/hearthstone.gamepedia.com/0/0d/Skin-Main-Page-Head-Background.jpg);
 }
+
+#list-card, #card-filter, #card-list {
+    background: #ebd19e url(https://hearthstone.gamepedia.com/media/hearthstone.gamepedia.com/f/fb/Skin-Content-Background.jpg);
+}
+
+html {
+font-family: 'Bree Serif', serif;
+}
+
+#focim {
+    margin-left: 15%;
+}
+
+.form-group{
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding-bottom: 3%;
+    padding-top: 3%;
+}
+
+#last {
+    border-right: 1px solid black;
+    padding-right: 2%;
+}
+
+#first {
+    border-left: 1px solid black;
+    padding-left: 2%;
+}
+

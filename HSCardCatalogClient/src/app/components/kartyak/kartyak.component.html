@@ -1,3 +1,8 @@
+<!DOCTYPE html>
+<html>
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Bree+Serif&display=swap');
+  </style>
 <div class="row" id="banner">
   <div class="col-3"></div>
   <div class="col-6">
@@ -7,8 +12,8 @@
 </div>
 <div class="row" id="list-card">
   <div class="col-4"></div>
-  <div class="col-4">
-    <h1 class="ml-4 mt-4">Kártyák listája</h1>
+  <div class="col-5">
+    <h1 class="mt-3 mb-4" id="focim">Kártyák listája</h1>
   </div>
   <div class="col-3"></div>
 </div>
@@ -16,7 +21,7 @@
 
     <form [formGroup]="searchForm" (ngSubmit)="onSubmit()" action="">
       <div class="form-row ml-5 mr-3">
-        <div class="form-group col-2">
+        <div class="form-group col-2" id="first">
           <label for="nev">Kártya neve</label>
           <input formControlName="name" type="text" name="nev" class="form-control" placeholder="Név" />
         </div>
@@ -32,7 +37,7 @@
           <label for="damage">Damage</label>
           <input formControlName="damage" type="number" name="damage" class="form-control"  min="0" max="10" placeholder="Sebzés" />
         </div>
-        <div class="form-group col-1">
+        <div class="form-group col-1" id="last">
           <label for="class">Class</label>
           <select formControlName="class" name="class" class="custom-select mr-sm-2" id="cardclass-selector">
               <option value="Mage">Mage</option>
@@ -68,3 +73,4 @@
       </div>
     </div>
 </div>
+</html>
