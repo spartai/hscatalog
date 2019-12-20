@@ -10,8 +10,6 @@
 	 - A látogatók tudnak regisztrálni az oldalra és ezzel további funkciókat oldanak fel az oldalon
 		 - Bejelentkezett felhasználók össze tudnak állítani egy vagy több paklit a fent lévő kártyákból
 		 - A paklikat lehet módosítani: kártyát kivenni belőlük, illetve hozzáadni is lehet a paklihoz kártyát; paklit átnevezni
-	 - Az admin felhasználók feltölthetnek új kártyákat a katalógusba, (minden adat 
- megadásával)
 
 - Az adatok tárolása H2 adatbázisban történik, 4 különböző táblában:
 Az oldal betöltésekor automatikusan lekérdeződnek az adatok a fent lévő kártyákról
@@ -116,4 +114,4 @@ A  _java_  mappán belül található még  _resources_  mappa, amely például 
 
 ## UML Adatbázis diagram
 
-![](.\hsproj\hscatalog\uml_database.png)
+![](.\uml_database.png)
