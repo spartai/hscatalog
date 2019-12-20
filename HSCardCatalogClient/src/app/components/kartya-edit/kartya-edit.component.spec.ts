@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FiokComponent } from './fiok.component';
+import { KartyaEditComponent } from './kartya-edit.component';
 
-describe('FiokComponent', () => {
-  let component: FiokComponent;
-  let fixture: ComponentFixture<FiokComponent>;
+describe('KartyaEditComponent', () => {
+  let component: KartyaEditComponent;
+  let fixture: ComponentFixture<KartyaEditComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FiokComponent ]
+      declarations: [ KartyaEditComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FiokComponent);
+    fixture = TestBed.createComponent(KartyaEditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

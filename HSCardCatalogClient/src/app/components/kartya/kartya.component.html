@@ -1,8 +1,3 @@
-<!DOCTYPE html>
-<html>
-<style>
-  @import url('https://fonts.googleapis.com/css?family=Bree+Serif&display=swap');
-  </style>
 <div class="row" id="banner">
     <div class="col-3"></div>
     <div class="col-5">
@@ -15,9 +10,9 @@
             <a [routerLink]="['/kartyak']" class="btn btn-dark">Vissza</a>
         </div>
     </div>
-    <div class="row mt-4 ml-3" id="content">
+    <div class="row mt-4 ml-3" id="content" *ngIf="card">
         <div class="col" [id] = "card">
-            <img src="{{card.imgsrc}}" style="width: 15%" class="rounded float-left img-fluid mr-3" />
+            <img src="{{card.imgsrc}}" style="width: 20%" class="rounded float-left img-fluid mr-3" />
             <h1 class="mb-2">
                 {{card.name}}
                 <br />
@@ -34,4 +29,11 @@
             <p style="font-size: 1.4em" *ngIf = "card.cardClass == null ">Osztály: Nincs</p>
         </div>
 </div>
-</html>
+<div class="row mt-4 ml-3">
+    <div class="col-12">
+        <p class="text-center">
+            <button mat-button [routerLink]="['/kartya', card.id, 'modosit']" class="btn btn-primary">Módosít</button>
+            <button mat-button [routerLink]="['/kartya/' + card.id + '/modosit']" class="btn btn-primary">Módosít</button>
+        </p>
+    </div>
+</div>
