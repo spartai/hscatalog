@@ -114,4 +114,4 @@ A  _java_  mappán belül található még  _resources_  mappa, amely például 
 
 ## UML Adatbázis diagram
 
-![](.\uml_database.png)
+![alt text](https://github.com/spartai/hscatalog/blob/master/uml_database.png)
