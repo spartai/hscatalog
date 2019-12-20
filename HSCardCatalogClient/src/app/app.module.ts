@@ -11,16 +11,6 @@ import { BelepesComponent } from './components/belepes/belepes.component';
 import { KartyaComponent } from './components/kartya/kartya.component';
 import { KartyaFormComponent } from './components/kartya-form/kartya-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {
-  MatToolbarModule, 
-  MatButtonModule, 
-  MatIconModule,
-  MatListModule,
-  MatButtonToggleModule,
-  MatFormFieldModule,
-  MatInputModule,
-  MatSelectModule
-} from '@angular/material';
 import { KartyaEditComponent } from './components/kartya-edit/kartya-edit.component';
 import { KartyaCreateComponent } from './components/kartya-create/kartya-create.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -44,14 +34,6 @@ import { AppRoutingModule } from './app-routing.module';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatToolbarModule, 
-    MatButtonModule, 
-    MatIconModule,
-    MatListModule,
-    MatButtonToggleModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
     AppRoutingModule
   ],
   providers: [],

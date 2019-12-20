@@ -29,6 +29,11 @@ public class DeckController {
     @Autowired
     private CardRepository cardRepository;
 
+    @GetMapping("")
+    public ResponseEntity<Iterable<Deck>> getAll(){
+        return new ResponseEntity(deckRepository.findAll(), HttpStatus.OK);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Deck> get(@PathVariable Long id) {
         Optional<Deck> deck = deckRepository.findById(id);
